@@ -8,11 +8,15 @@ final class AppContainer {
     let environment: AppEnvironment
     let preferences: AppPreferences
     let appearance: AppearanceStore
+    let recorder: ScreenRecordingController
+    let recordingLibrary: RecordingLibrary
 
     init(environment: AppEnvironment = .current, preferences: AppPreferences) {
         self.environment = environment
         self.preferences = preferences
         self.appearance = AppearanceStore(preferences: preferences)
+        self.recorder = ScreenRecordingController(preferences: preferences)
+        self.recordingLibrary = FileRecordingLibrary()
     }
 
     static func live() -> AppContainer {
@@ -37,8 +41,11 @@ final class AppContainer {
     }
 
     func makeHomeViewModel() -> HomeViewModel {
-        // TODO: hand the options to the screen recording engine once it exists.
-        HomeViewModel(preferences: preferences, onStartRecording: { _ in })
+        HomeViewModel(preferences: preferences, recorder: recorder)
+    }
+
+    func makeDashboardViewModel() -> DashboardViewModel {
+        DashboardViewModel(library: recordingLibrary, recorder: recorder)
     }
 
     func makeSettingsViewModel() -> SettingsViewModel {

@@ -6,7 +6,26 @@
 	objectVersion = 110;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		58BE425B3EFF4F75E0D99BAE /* RecQuestBroadcast.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 9DEC7AE31E47B76A06B397A0 /* RecQuestBroadcast.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		EF980B0B60C5B8B3917CD262 /* RecQuestWidgets.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = FAA6FD97D734106755CE702C /* RecQuestWidgets.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
+		32E356F34C06EAEAEDA554A6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F5D5950E309A40DD00F312C9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9AAACB39CC09AAA4A3AE576B;
+			remoteInfo = RecQuestBroadcast;
+		};
+		DCBEB95D87AD0774B41FA111 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F5D5950E309A40DD00F312C9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 90427780686C920A2ACF8806;
+			remoteInfo = RecQuestWidgets;
+		};
 		F5D59526309A40DF00F312C9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F5D5950E309A40DD00F312C9 /* Project object */;
@@ -23,17 +42,55 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		77BC2C90CFFFD8027CF76949 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			dstPath = "";
+			dstSubfolder = PlugIns;
+			files = (
+				58BE425B3EFF4F75E0D99BAE /* RecQuestBroadcast.appex in Embed Foundation Extensions */,
+				EF980B0B60C5B8B3917CD262 /* RecQuestWidgets.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		01DB9139E5F9FB9A41587810 /* Prod.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Prod.xcconfig; sourceTree = "<group>"; };
+		0F2EB93AD23F89AA2885D22B /* AppGroup.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AppGroup.entitlements; sourceTree = "<group>"; };
+		3DE60C9ECE9A40535BDC2D41 /* Widgets-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Widgets-Info.plist"; sourceTree = "<group>"; };
+		46CB71CAE83B48017D568769 /* Broadcast-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Broadcast-Info.plist"; sourceTree = "<group>"; };
 		4F38E2711F2EB10C70E0BEF8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7CBA0BD35C1D302AFE4A38BB /* Shared.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Shared.xcconfig; sourceTree = "<group>"; };
+		9DEC7AE31E47B76A06B397A0 /* RecQuestBroadcast.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = RecQuestBroadcast.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA25708092BFE1A7DDE6AD47 /* Beta.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Beta.xcconfig; sourceTree = "<group>"; };
 		F5D59516309A40DD00F312C9 /* Screen Recorder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Screen Recorder.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5D59525309A40DF00F312C9 /* Screen RecorderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Screen RecorderTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5D5952F309A40DF00F312C9 /* Screen RecorderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Screen RecorderUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FAA6FD97D734106755CE702C /* RecQuestWidgets.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = RecQuestWidgets.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		0118744C79565F3890778B60 /* RecQuestBroadcast */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = RecQuestBroadcast;
+			sourceTree = "<group>";
+		};
+		62A83945DDFE2E65B8AB957F /* LiveActivity */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = LiveActivity;
+			sourceTree = "<group>";
+		};
+		890D3FBE0A6F9D25F94A3970 /* RecordingSession */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = RecordingSession;
+			sourceTree = "<group>";
+		};
+		D8592F32C2D09BEA5A328F53 /* RecQuestWidgets */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = RecQuestWidgets;
+			sourceTree = "<group>";
+		};
 		F5D59518309A40DD00F312C9 /* Screen Recorder */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = "Screen Recorder";
@@ -52,6 +109,16 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		9470C046463D371CC86043E1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			files = (
+			);
+		};
+		9FD612150BC650A0EC1409E5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			files = (
+			);
+		};
 		F5D59513309A40DD00F312C9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			files = (
@@ -77,6 +144,9 @@
 				EA25708092BFE1A7DDE6AD47 /* Beta.xcconfig */,
 				01DB9139E5F9FB9A41587810 /* Prod.xcconfig */,
 				4F38E2711F2EB10C70E0BEF8 /* Info.plist */,
+				46CB71CAE83B48017D568769 /* Broadcast-Info.plist */,
+				3DE60C9ECE9A40535BDC2D41 /* Widgets-Info.plist */,
+				0F2EB93AD23F89AA2885D22B /* AppGroup.entitlements */,
 			);
 			path = Config;
 			sourceTree = "<group>";
@@ -86,6 +156,9 @@
 			children = (
 				93884354C2249A3BF78A9588 /* Config */,
 				F5D59518309A40DD00F312C9 /* Screen Recorder */,
+				F79D1D0745B9A4D35BF557F9 /* Shared */,
+				0118744C79565F3890778B60 /* RecQuestBroadcast */,
+				D8592F32C2D09BEA5A328F53 /* RecQuestWidgets */,
 				F5D59528309A40DF00F312C9 /* Screen RecorderTests */,
 				F5D59532309A40DF00F312C9 /* Screen RecorderUITests */,
 				F5D59517309A40DD00F312C9 /* Products */,
@@ -98,13 +171,63 @@
 				F5D59516309A40DD00F312C9 /* Screen Recorder.app */,
 				F5D59525309A40DF00F312C9 /* Screen RecorderTests.xctest */,
 				F5D5952F309A40DF00F312C9 /* Screen RecorderUITests.xctest */,
+				9DEC7AE31E47B76A06B397A0 /* RecQuestBroadcast.appex */,
+				FAA6FD97D734106755CE702C /* RecQuestWidgets.appex */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		F79D1D0745B9A4D35BF557F9 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				890D3FBE0A6F9D25F94A3970 /* RecordingSession */,
+				62A83945DDFE2E65B8AB957F /* LiveActivity */,
+			);
+			path = Shared;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		90427780686C920A2ACF8806 /* RecQuestWidgets */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8BF55384B50C2207B3262A6E /* Build configuration list for PBXNativeTarget "RecQuestWidgets" */;
+			buildPhases = (
+				BAD26C616CA3244F3E7937F6 /* Sources */,
+				9470C046463D371CC86043E1 /* Frameworks */,
+				AF06A2EDC81EBEC84C2B07DA /* Resources */,
+			);
+			buildRules = (
+			);
+			fileSystemSynchronizedGroups = (
+				62A83945DDFE2E65B8AB957F /* LiveActivity */,
+				890D3FBE0A6F9D25F94A3970 /* RecordingSession */,
+				D8592F32C2D09BEA5A328F53 /* RecQuestWidgets */,
+			);
+			name = RecQuestWidgets;
+			productName = RecQuestWidgets;
+			productReference = FAA6FD97D734106755CE702C /* RecQuestWidgets.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		9AAACB39CC09AAA4A3AE576B /* RecQuestBroadcast */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9CAF94986179CA61F3F1593F /* Build configuration list for PBXNativeTarget "RecQuestBroadcast" */;
+			buildPhases = (
+				29FDA4D88DF08E5E4FAFDA4B /* Sources */,
+				9FD612150BC650A0EC1409E5 /* Frameworks */,
+				C5195D1EBEE821E30BDB3847 /* Resources */,
+			);
+			buildRules = (
+			);
+			fileSystemSynchronizedGroups = (
+				0118744C79565F3890778B60 /* RecQuestBroadcast */,
+				890D3FBE0A6F9D25F94A3970 /* RecordingSession */,
+			);
+			name = RecQuestBroadcast;
+			productName = RecQuestBroadcast;
+			productReference = 9DEC7AE31E47B76A06B397A0 /* RecQuestBroadcast.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		F5D59515309A40DD00F312C9 /* Screen Recorder */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F5D59537309A40DF00F312C9 /* Build configuration list for PBXNativeTarget "Screen Recorder" */;
@@ -112,10 +235,17 @@
 				F5D59512309A40DD00F312C9 /* Sources */,
 				F5D59513309A40DD00F312C9 /* Frameworks */,
 				F5D59514309A40DD00F312C9 /* Resources */,
+				77BC2C90CFFFD8027CF76949 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
+			dependencies = (
+				0BF8ECF687462A5A33EC11E1 /* PBXTargetDependency */,
+				DD9A2B9DEC59FFADF435E850 /* PBXTargetDependency */,
+			);
 			fileSystemSynchronizedGroups = (
+				62A83945DDFE2E65B8AB957F /* LiveActivity */,
+				890D3FBE0A6F9D25F94A3970 /* RecordingSession */,
 				F5D59518309A40DD00F312C9 /* Screen Recorder */,
 			);
 			name = "Screen Recorder";
@@ -175,6 +305,12 @@
 				LastSwiftUpdateCheck = 2700;
 				LastUpgradeCheck = 2700;
 				TargetAttributes = {
+					90427780686C920A2ACF8806 = {
+						CreatedOnToolsVersion = 27.0;
+					};
+					9AAACB39CC09AAA4A3AE576B = {
+						CreatedOnToolsVersion = 27.0;
+					};
 					F5D59515309A40DD00F312C9 = {
 						CreatedOnToolsVersion = 27.0;
 					};
@@ -205,11 +341,23 @@
 				F5D59515309A40DD00F312C9 /* Screen Recorder */,
 				F5D59524309A40DF00F312C9 /* Screen RecorderTests */,
 				F5D5952E309A40DF00F312C9 /* Screen RecorderUITests */,
+				9AAACB39CC09AAA4A3AE576B /* RecQuestBroadcast */,
+				90427780686C920A2ACF8806 /* RecQuestWidgets */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		AF06A2EDC81EBEC84C2B07DA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			files = (
+			);
+		};
+		C5195D1EBEE821E30BDB3847 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			files = (
+			);
+		};
 		F5D59514309A40DD00F312C9 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			files = (
@@ -228,6 +376,16 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		29FDA4D88DF08E5E4FAFDA4B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			files = (
+			);
+		};
+		BAD26C616CA3244F3E7937F6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			files = (
+			);
+		};
 		F5D59512309A40DD00F312C9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			files = (
@@ -246,6 +404,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		0BF8ECF687462A5A33EC11E1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9AAACB39CC09AAA4A3AE576B /* RecQuestBroadcast */;
+			targetProxy = 32E356F34C06EAEAEDA554A6 /* PBXContainerItemProxy */;
+		};
+		DD9A2B9DEC59FFADF435E850 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 90427780686C920A2ACF8806 /* RecQuestWidgets */;
+			targetProxy = DCBEB95D87AD0774B41FA111 /* PBXContainerItemProxy */;
+		};
 		F5D59527309A40DF00F312C9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = F5D59515309A40DD00F312C9 /* Screen Recorder */;
@@ -366,6 +534,128 @@
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = "Debug-Prod";
+		};
+		35D59208D955674483D19233 /* Debug-Beta configuration for PBXNativeTarget "RecQuestWidgets" */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EA25708092BFE1A7DDE6AD47 /* Beta.xcconfig */;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "";
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = "";
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = "";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = MRK8R5HCBL;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Config/Widgets-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(WIDGETS_EXTENSION_BUNDLE_ID)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = "Debug-Beta";
+		};
+		4AE9B941991C3B9CE8F3C779 /* Release-Beta configuration for PBXNativeTarget "RecQuestBroadcast" */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EA25708092BFE1A7DDE6AD47 /* Beta.xcconfig */;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = MRK8R5HCBL;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Config/Broadcast-Info.plist";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BROADCAST_EXTENSION_BUNDLE_ID)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = "Release-Beta";
+		};
+		646806FA7D01C28F296D9F39 /* Release-Prod configuration for PBXNativeTarget "RecQuestBroadcast" */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 01DB9139E5F9FB9A41587810 /* Prod.xcconfig */;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = MRK8R5HCBL;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Config/Broadcast-Info.plist";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BROADCAST_EXTENSION_BUNDLE_ID)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = "Release-Prod";
+		};
+		8438889DB7DC894FC1F70105 /* Debug-Prod configuration for PBXNativeTarget "RecQuestWidgets" */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 01DB9139E5F9FB9A41587810 /* Prod.xcconfig */;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "";
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = "";
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = "";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = MRK8R5HCBL;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Config/Widgets-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(WIDGETS_EXTENSION_BUNDLE_ID)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 6.0;
@@ -547,6 +837,36 @@
 			};
 			name = "Debug-Beta";
 		};
+		B496FD0EFDC34E596F174B4C /* Debug-Prod configuration for PBXNativeTarget "RecQuestBroadcast" */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 01DB9139E5F9FB9A41587810 /* Prod.xcconfig */;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = MRK8R5HCBL;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Config/Broadcast-Info.plist";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BROADCAST_EXTENSION_BUNDLE_ID)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = "Debug-Prod";
+		};
 		B549CDE8C95FD3EC75649E15 /* Release-Prod configuration for PBXProject "Screen Recorder" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -703,6 +1023,98 @@
 			};
 			name = "Release-Prod";
 		};
+		D1CAC8F865C00F5391D9E16D /* Release-Prod configuration for PBXNativeTarget "RecQuestWidgets" */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 01DB9139E5F9FB9A41587810 /* Prod.xcconfig */;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "";
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = "";
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = "";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = MRK8R5HCBL;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Config/Widgets-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(WIDGETS_EXTENSION_BUNDLE_ID)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = "Release-Prod";
+		};
+		D9EB7464AD2DA96556540E83 /* Debug-Beta configuration for PBXNativeTarget "RecQuestBroadcast" */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EA25708092BFE1A7DDE6AD47 /* Beta.xcconfig */;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = MRK8R5HCBL;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Config/Broadcast-Info.plist";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BROADCAST_EXTENSION_BUNDLE_ID)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = "Debug-Beta";
+		};
+		E5CBF1264FAE75A53DF87C4A /* Release-Beta configuration for PBXNativeTarget "RecQuestWidgets" */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EA25708092BFE1A7DDE6AD47 /* Beta.xcconfig */;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "";
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = "";
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = "";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = MRK8R5HCBL;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Config/Widgets-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(WIDGETS_EXTENSION_BUNDLE_ID)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = "Release-Beta";
+		};
 		EDB06E0D94BEE06CA9713DE4 /* Debug-Prod configuration for PBXProject "Screen Recorder" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -792,6 +1204,26 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		8BF55384B50C2207B3262A6E /* Build configuration list for PBXNativeTarget "RecQuestWidgets" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				35D59208D955674483D19233 /* Debug-Beta configuration for PBXNativeTarget "RecQuestWidgets" */,
+				8438889DB7DC894FC1F70105 /* Debug-Prod configuration for PBXNativeTarget "RecQuestWidgets" */,
+				E5CBF1264FAE75A53DF87C4A /* Release-Beta configuration for PBXNativeTarget "RecQuestWidgets" */,
+				D1CAC8F865C00F5391D9E16D /* Release-Prod configuration for PBXNativeTarget "RecQuestWidgets" */,
+			);
+			defaultConfigurationName = "Release-Prod";
+		};
+		9CAF94986179CA61F3F1593F /* Build configuration list for PBXNativeTarget "RecQuestBroadcast" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D9EB7464AD2DA96556540E83 /* Debug-Beta configuration for PBXNativeTarget "RecQuestBroadcast" */,
+				B496FD0EFDC34E596F174B4C /* Debug-Prod configuration for PBXNativeTarget "RecQuestBroadcast" */,
+				4AE9B941991C3B9CE8F3C779 /* Release-Beta configuration for PBXNativeTarget "RecQuestBroadcast" */,
+				646806FA7D01C28F296D9F39 /* Release-Prod configuration for PBXNativeTarget "RecQuestBroadcast" */,
+			);
+			defaultConfigurationName = "Release-Prod";
+		};
 		F5D59511309A40DD00F312C9 /* Build configuration list for PBXProject "Screen Recorder" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

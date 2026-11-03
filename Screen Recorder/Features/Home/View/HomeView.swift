@@ -1,13 +1,22 @@
+import AVFoundation
 import SwiftUI
 
-/// Home shell: hosts the tab content above the custom `HomeBottomBar`, plus the recording setup dialog.
+/// Home shell: hosts the tab content above the custom `HomeBottomBar`, plus the recording setup dialog,
+/// the status bar of a running recording and the face cam bubble.
 struct HomeView: View {
     @State private var viewModel: HomeViewModel
+    @State private var dashboardViewModel: DashboardViewModel
     @State private var settingsViewModel: SettingsViewModel
+    private let faceCamLayer: AVSampleBufferDisplayLayer?
 
-    init(viewModel: HomeViewModel, settingsViewModel: SettingsViewModel) {
+    init(viewModel: HomeViewModel,
+         dashboardViewModel: DashboardViewModel,
+         settingsViewModel: SettingsViewModel,
+         faceCamLayer: AVSampleBufferDisplayLayer? = nil) {
         _viewModel = State(initialValue: viewModel)
+        _dashboardViewModel = State(initialValue: dashboardViewModel)
         _settingsViewModel = State(initialValue: settingsViewModel)
+        self.faceCamLayer = faceCamLayer
     }
 
     var body: some View {
@@ -18,7 +27,7 @@ struct HomeView: View {
 
             Group {
                 switch state.selectedTab {
-                case .dashboard: DashboardView()
+                case .dashboard: DashboardView(viewModel: dashboardViewModel)
                 case .settings: SettingsView(viewModel: settingsViewModel)
                 }
             }
@@ -27,12 +36,32 @@ struct HomeView: View {
         }
         .animation(.smooth(duration: 0.3), value: state.selectedTab)
         .safeAreaInset(edge: .bottom, spacing: 0) {
-            HomeBottomBar(selectedTab: state.selectedTab,
-                          onSelect: { viewModel.send(.selectTab($0)) },
-                          onRecord: { viewModel.send(.showRecordingSetup) })
+            VStack(spacing: Spacing.s) {
+                if state.recorder.status.isActive {
+                    RecordingStatusBar(status: state.recorder.status,
+                                       onPause: { viewModel.send(.pauseRecording) },
+                                       onResume: { viewModel.send(.resumeRecording) },
+                                       onStop: { viewModel.send(.stopRecording) })
+                        .transition(.move(edge: .bottom).combined(with: .opacity))
+                }
+                HomeBottomBar(selectedTab: state.selectedTab,
+                              onSelect: { viewModel.send(.selectTab($0)) },
+                              onRecord: { viewModel.send(.showRecordingSetup) })
+            }
         }
+        .overlay(alignment: .topTrailing) { faceCam }
         .overlay { recordingSetup }
         .animation(.spring(response: 0.38, dampingFraction: 0.78), value: state.isRecordingSetupPresented)
+        .animation(.spring(response: 0.38, dampingFraction: 0.78), value: state.recorder)
+    }
+
+    @ViewBuilder
+    private var faceCam: some View {
+        if viewModel.state.recorder.isFaceCamOn, let faceCamLayer {
+            LiveFaceCamBubble(layer: faceCamLayer)
+                .padding(Spacing.m)
+                .transition(.scale.combined(with: .opacity))
+        }
     }
 
     @ViewBuilder
@@ -59,5 +88,7 @@ struct HomeView: View {
 
 #Preview {
     let container = AppContainer.preview(hasCompletedOnboarding: true)
-    HomeView(viewModel: container.makeHomeViewModel(), settingsViewModel: container.makeSettingsViewModel())
+    HomeView(viewModel: container.makeHomeViewModel(),
+             dashboardViewModel: container.makeDashboardViewModel(),
+             settingsViewModel: container.makeSettingsViewModel())
 }

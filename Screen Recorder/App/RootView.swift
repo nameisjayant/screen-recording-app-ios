@@ -21,7 +21,9 @@ struct RootView: View {
                                         removal: .opacity.combined(with: .scale(scale: 0.96))))
             case .home:
                 HomeView(viewModel: container.makeHomeViewModel(),
-                         settingsViewModel: container.makeSettingsViewModel())
+                         dashboardViewModel: container.makeDashboardViewModel(),
+                         settingsViewModel: container.makeSettingsViewModel(),
+                         faceCamLayer: container.recorder.faceCam.displayLayer)
                     .transition(.opacity.combined(with: .scale(scale: 1.04)))
             }
         }

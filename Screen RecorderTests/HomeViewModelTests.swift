@@ -1,11 +1,12 @@
+import Foundation
 import Testing
 @testable import Screen_Recorder
 
 @MainActor
 struct HomeViewModelTests {
     private func makeViewModel(preferences: AppPreferences = InMemoryAppPreferences(),
-                               onStartRecording: @escaping (RecordingOptions) -> Void = { _ in }) -> HomeViewModel {
-        HomeViewModel(preferences: preferences, onStartRecording: onStartRecording)
+                               recorder: FakeRecorder = FakeRecorder()) -> HomeViewModel {
+        HomeViewModel(preferences: preferences, recorder: recorder)
     }
 
     @Test func startsOnDashboardWithDialogClosed() {
@@ -52,17 +53,43 @@ struct HomeViewModelTests {
     }
 
     @Test func startRecordingClosesDialogAndPassesOptions() {
-        var started: [RecordingOptions] = []
-        let viewModel = makeViewModel(onStartRecording: { started.append($0) })
+        let recorder = FakeRecorder()
+        let viewModel = makeViewModel(recorder: recorder)
 
         viewModel.send(.startRecording)
-        #expect(started.isEmpty, "Start is ignored while the dialog is closed")
+        #expect(recorder.started.isEmpty, "Start is ignored while the dialog is closed")
 
         viewModel.send(.showRecordingSetup)
         viewModel.send(.setFaceCamEnabled(true))
         viewModel.send(.startRecording)
 
         #expect(!viewModel.state.isRecordingSetupPresented)
-        #expect(started == [RecordingOptions(isFaceCamEnabled: true, isMicrophoneEnabled: true)])
+        #expect(recorder.started == [RecordingOptions(isFaceCamEnabled: true, isMicrophoneEnabled: true)])
+    }
+
+    @Test func mirrorsRecorderStateAndForwardsControls() {
+        let recorder = FakeRecorder()
+        let viewModel = makeViewModel(recorder: recorder)
+        let recording = RecorderState(status: .started(at: .now), isFaceCamOn: true)
+
+        recorder.state = recording
+        #expect(viewModel.state.recorder == recording)
+
+        viewModel.send(.pauseRecording)
+        viewModel.send(.resumeRecording)
+        viewModel.send(.stopRecording)
+        #expect(recorder.commands == ["pause", "resume", "stop"])
+
+        recorder.state = RecorderState()
+        #expect(viewModel.state.recorder == RecorderState())
+    }
+
+    @Test func setupDialogStaysClosedWhileRecording() {
+        let recorder = FakeRecorder()
+        recorder.state = RecorderState(status: .started(at: .now))
+        let viewModel = makeViewModel(recorder: recorder)
+
+        viewModel.send(.showRecordingSetup)
+        #expect(!viewModel.state.isRecordingSetupPresented)
     }
 }

@@ -4,6 +4,7 @@ nonisolated struct HomeState: Equatable, Sendable {
     var selectedTab: HomeTab = .dashboard
     var isRecordingSetupPresented = false
     var recordingOptions = RecordingOptions()
+    var recorder = RecorderState()
 }
 
 enum HomeIntent {
@@ -13,6 +14,9 @@ enum HomeIntent {
     case setFaceCamEnabled(Bool)
     case setMicrophoneEnabled(Bool)
     case startRecording
+    case pauseRecording
+    case resumeRecording
+    case stopRecording
 }
 
 @Observable
@@ -20,14 +24,21 @@ final class HomeViewModel: ViewModel {
     private(set) var state: HomeState
 
     @ObservationIgnored private let preferences: AppPreferences
-    @ObservationIgnored private let onStartRecording: (RecordingOptions) -> Void
+    @ObservationIgnored private let recorder: RecordingService
 
     init(initialTab: HomeTab = .dashboard,
          preferences: AppPreferences,
-         onStartRecording: @escaping (RecordingOptions) -> Void) {
-        self.state = HomeState(selectedTab: initialTab, recordingOptions: preferences.recordingOptions)
+         recorder: RecordingService) {
+        self.state = HomeState(selectedTab: initialTab,
+                               recordingOptions: preferences.recordingOptions,
+                               recorder: recorder.state)
         self.preferences = preferences
-        self.onStartRecording = onStartRecording
+        self.recorder = recorder
+        recorder.observeState { [weak self] recorderState in
+            guard let self else { return false }
+            self.state.recorder = recorderState
+            return true
+        }
     }
 
     func send(_ intent: HomeIntent) {
@@ -35,6 +46,8 @@ final class HomeViewModel: ViewModel {
         case .selectTab(let tab):
             state.selectedTab = tab
         case .showRecordingSetup:
+            // One recording at a time; the status bar controls the running one.
+            guard !state.recorder.status.isActive else { return }
             state.isRecordingSetupPresented = true
         case .dismissRecordingSetup:
             state.isRecordingSetupPresented = false
@@ -45,7 +58,13 @@ final class HomeViewModel: ViewModel {
         case .startRecording:
             guard state.isRecordingSetupPresented else { return }
             state.isRecordingSetupPresented = false
-            onStartRecording(state.recordingOptions)
+            recorder.start(with: state.recordingOptions)
+        case .pauseRecording:
+            recorder.pause()
+        case .resumeRecording:
+            recorder.resume()
+        case .stopRecording:
+            recorder.stop()
         }
     }
 

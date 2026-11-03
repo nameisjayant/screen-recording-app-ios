@@ -4,15 +4,24 @@
 APP_NAME = RecQuest
 BASE_BUNDLE_ID = com.nameisjayant.Screen-Recorder
 
-PRODUCT_BUNDLE_IDENTIFIER = $(BASE_BUNDLE_ID)$(BUNDLE_ID_SUFFIX)
+APP_BUNDLE_ID = $(BASE_BUNDLE_ID)$(BUNDLE_ID_SUFFIX)
+PRODUCT_BUNDLE_IDENTIFIER = $(APP_BUNDLE_ID)
+
+// Recording runs in the RecQuestBroadcast extension; RecQuestWidgets hosts the Live Activity.
+// All three share this App Group (per flavor, so Beta and Prod never see each other's recordings).
+APP_GROUP_ID = group.$(APP_BUNDLE_ID)
+BROADCAST_EXTENSION_BUNDLE_ID = $(APP_BUNDLE_ID).Broadcast
+WIDGETS_EXTENSION_BUNDLE_ID = $(APP_BUNDLE_ID).Widgets
+CODE_SIGN_ENTITLEMENTS = Config/AppGroup.entitlements
 ASSETCATALOG_COMPILER_APPICON_NAME = $(APP_ICON_NAME)
 
 INFOPLIST_FILE = Config/Info.plist
 INFOPLIST_KEY_CFBundleDisplayName = $(APP_DISPLAY_NAME)
 INFOPLIST_KEY_LSApplicationCategoryType = public.app-category.video
 INFOPLIST_KEY_UIUserInterfaceStyle = Dark
+INFOPLIST_KEY_NSSupportsLiveActivities = YES
 
-// Privacy strings for the upcoming recording features.
+// Privacy strings for the recording features.
 INFOPLIST_KEY_NSCameraUsageDescription = RecQuest uses the front camera to show your face cam bubble while you record.
 INFOPLIST_KEY_NSMicrophoneUsageDescription = RecQuest uses the microphone to capture your live commentary.
 INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = RecQuest saves your finished recordings to your photo library.
