@@ -1,0 +1,8 @@
+// Beta flavor: installs side by side with Prod, shows the BETA icon and enables beta-only tooling.
+
+#include "Shared.xcconfig"
+
+BUNDLE_ID_SUFFIX = .beta
+APP_DISPLAY_NAME = $(APP_NAME) β
+APP_ICON_NAME = AppIcon-Beta
+SWIFT_ACTIVE_COMPILATION_CONDITIONS = $(inherited) BETA
