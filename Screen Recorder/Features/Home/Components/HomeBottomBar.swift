@@ -1,16 +1,18 @@
 import SwiftUI
 
-/// Chunky game-style bottom bar: two side tabs and a raised record "+" button in the middle.
+/// Chunky game-style bottom bar: two side tabs and a raised microphone button in the middle
+/// that opens the recording setup dialog.
 struct HomeBottomBar: View {
     let selectedTab: HomeTab
     let onSelect: (HomeTab) -> Void
+    let onRecord: () -> Void
 
     var body: some View {
         let shape = RoundedRectangle(cornerRadius: Radius.l, style: .continuous)
 
         HStack(alignment: .bottom, spacing: 0) {
             HomeTabItem(tab: .dashboard, isSelected: selectedTab == .dashboard) { onSelect(.dashboard) }
-            RecordTabButton(isSelected: selectedTab == .recorder) { onSelect(.recorder) }
+            RecordButton(action: onRecord)
                 .frame(maxWidth: .infinity)
             HomeTabItem(tab: .settings, isSelected: selectedTab == .settings) { onSelect(.settings) }
         }
@@ -59,29 +61,24 @@ private struct HomeTabItem: View {
     }
 }
 
-/// Raised round record button that pokes out above the bar.
-private struct RecordTabButton: View {
-    let isSelected: Bool
+/// Raised round microphone button that pokes out above the bar.
+private struct RecordButton: View {
     let action: () -> Void
 
     var body: some View {
         Button(action: action) {
-            Image(systemName: HomeTab.recorder.icon)
-                .font(.system(size: 28, weight: .heavy))
-                .rotationEffect(.degrees(isSelected ? 90 : 0))
+            Image(systemName: "mic.fill")
+                .font(.system(size: 26, weight: .bold))
         }
-        .buttonStyle(RecordButtonStyle(isSelected: isSelected))
+        .buttonStyle(RecordButtonStyle())
         .offset(y: -Spacing.l)
         .padding(.bottom, -Spacing.l)
-        .animation(.spring(response: 0.35, dampingFraction: 0.55), value: isSelected)
-        .accessibilityLabel(Text(HomeTab.recorder.title))
-        .accessibilityAddTraits(isSelected ? .isSelected : [])
-        .accessibilityIdentifier("home.tab.\(HomeTab.recorder.rawValue)")
+        .accessibilityLabel(Text("New Recording"))
+        .accessibilityIdentifier("home.record")
     }
 }
 
 private struct RecordButtonStyle: ButtonStyle {
-    let isSelected: Bool
     private let size: CGFloat = 66
 
     func makeBody(configuration: Configuration) -> some View {
@@ -106,9 +103,9 @@ private struct RecordButtonStyle: ButtonStyle {
             .background {
                 // Ring in the bar's color so the button looks "cut into" the bar.
                 Circle().fill(Palette.surface)
-                    .overlay(Circle().stroke(isSelected ? Palette.record : Palette.outline, lineWidth: 2))
+                    .overlay(Circle().stroke(Palette.outline, lineWidth: 2))
             }
-            .shadow(color: Palette.record.opacity(isSelected ? 0.55 : 0.3), radius: 14, y: 4)
+            .shadow(color: Palette.record.opacity(0.4), radius: 14, y: 4)
             .animation(.spring(response: 0.18, dampingFraction: 0.6), value: pressed)
     }
 }
@@ -117,7 +114,7 @@ private struct RecordButtonStyle: ButtonStyle {
     @Previewable @State var tab: HomeTab = .dashboard
     VStack {
         Spacer()
-        HomeBottomBar(selectedTab: tab) { tab = $0 }
+        HomeBottomBar(selectedTab: tab, onSelect: { tab = $0 }, onRecord: {})
     }
     .background(AppBackground())
 }

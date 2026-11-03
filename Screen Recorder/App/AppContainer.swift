@@ -7,10 +7,12 @@ import Foundation
 final class AppContainer {
     let environment: AppEnvironment
     let preferences: AppPreferences
+    let appearance: AppearanceStore
 
     init(environment: AppEnvironment = .current, preferences: AppPreferences) {
         self.environment = environment
         self.preferences = preferences
+        self.appearance = AppearanceStore(preferences: preferences)
     }
 
     static func live() -> AppContainer {
@@ -35,6 +37,11 @@ final class AppContainer {
     }
 
     func makeHomeViewModel() -> HomeViewModel {
-        HomeViewModel()
+        // TODO: hand the options to the screen recording engine once it exists.
+        HomeViewModel(preferences: preferences, onStartRecording: { _ in })
+    }
+
+    func makeSettingsViewModel() -> SettingsViewModel {
+        SettingsViewModel(appearance: appearance)
     }
 }

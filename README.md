@@ -20,7 +20,8 @@ SwiftUI + MVI (Swift 6, main-actor by default, iOS 17+).
 - View models conform to `ViewModel`: they expose an `Equatable` `state` and take user actions via `send(_ intent:)`.
 - `AppContainer` is the composition root that builds view models and owns dependencies.
 - `AppRouter` drives the top-level flow: Splash → Onboarding (first launch) → Home.
-- Home hosts a custom game-style bottom bar (`HomeBottomBar`) with three tabs: Dashboard, Screen Recorder (raised "+" button) and Settings.
+- Home hosts a custom game-style bottom bar (`HomeBottomBar`): Dashboard and Settings tabs, plus a raised microphone button that opens the recording setup dialog (face camera / microphone toggles, remembered in `AppPreferences`).
+- Theme: `AppearanceStore` (owned by `AppContainer`) holds the System / Light / Dark choice, persisted in `AppPreferences` and picked in Settings. Dark is the default.
 
 ```
 Screen Recorder/
@@ -37,6 +38,7 @@ scripts/          generate_app_icon.swift
 
 - Fonts: **Fredoka** (display, buttons) and **Nunito** (body), both SIL OFL.
 - Palette "Arcade Pop": deep navy with violet, record red, sun yellow and mint; chunky 3D buttons (`.buttonStyle(.game(...))`).
+- Light and dark: surface and text colors in `Palette` adapt via `Color(light:dark:)`; brand colors stay the same. Use `Palette` tokens instead of hardcoded colors so both themes work.
 - The app icon is drawn in code. Regenerate it with `swift scripts/generate_app_icon.swift` from the repo root.
 
 ## Tests
