@@ -33,4 +33,8 @@ final class AppContainer {
     func makeOnboardingViewModel(onFinish: @escaping () -> Void) -> OnboardingViewModel {
         OnboardingViewModel(onFinish: onFinish)
     }
+
+    func makeHomeViewModel() -> HomeViewModel {
+        HomeViewModel()
+    }
 }

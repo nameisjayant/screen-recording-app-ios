@@ -20,7 +20,7 @@ struct RootView: View {
                 .transition(.asymmetric(insertion: .opacity.combined(with: .scale(scale: 1.04)),
                                         removal: .opacity.combined(with: .scale(scale: 0.96))))
             case .home:
-                HomeView()
+                HomeView(viewModel: container.makeHomeViewModel())
                     .transition(.opacity.combined(with: .scale(scale: 1.04)))
             }
         }

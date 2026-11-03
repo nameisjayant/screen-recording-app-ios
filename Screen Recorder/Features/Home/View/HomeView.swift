@@ -1,31 +1,36 @@
 import SwiftUI
 
-/// Home shell. The full home UI is coming next; add a `HomeViewModel` once the screen has state.
+/// Home shell: hosts the tab content above the custom `HomeBottomBar`.
 struct HomeView: View {
-    var body: some View {
-        NavigationStack {
-            ZStack {
-                AppBackground()
+    @State private var viewModel: HomeViewModel
 
-                VStack(spacing: Spacing.l) {
-                    Spacer()
-                    AppLogoMark(size: 110)
-                    Text("Ready to record")
-                        .font(.displayMedium)
-                        .foregroundStyle(Palette.textPrimary)
-                        .accessibilityIdentifier("home.title")
-                    Text("The home screen is under construction.")
-                        .font(.bodyMedium)
-                        .foregroundStyle(Palette.textSecondary)
-                    Spacer()
+    init(viewModel: HomeViewModel) {
+        _viewModel = State(initialValue: viewModel)
+    }
+
+    var body: some View {
+        let selectedTab = viewModel.state.selectedTab
+
+        ZStack {
+            AppBackground(glow: selectedTab.accent)
+
+            Group {
+                switch selectedTab {
+                case .dashboard: DashboardView()
+                case .recorder: RecorderView()
+                case .settings: SettingsView()
                 }
-                .padding(Spacing.l)
             }
-            .toolbarBackground(.hidden, for: .navigationBar)
+            .id(selectedTab)
+            .transition(.opacity.combined(with: .scale(scale: 0.97)))
+        }
+        .animation(.smooth(duration: 0.3), value: selectedTab)
+        .safeAreaInset(edge: .bottom, spacing: 0) {
+            HomeBottomBar(selectedTab: selectedTab) { viewModel.send(.selectTab($0)) }
         }
     }
 }
 
 #Preview {
-    HomeView()
+    HomeView(viewModel: HomeViewModel())
 }

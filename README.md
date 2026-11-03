@@ -20,13 +20,14 @@ SwiftUI + MVI (Swift 6, main-actor by default, iOS 17+).
 - View models conform to `ViewModel`: they expose an `Equatable` `state` and take user actions via `send(_ intent:)`.
 - `AppContainer` is the composition root that builds view models and owns dependencies.
 - `AppRouter` drives the top-level flow: Splash → Onboarding (first launch) → Home.
+- Home hosts a custom game-style bottom bar (`HomeBottomBar`) with three tabs: Dashboard, Screen Recorder (raised "+" button) and Settings.
 
 ```
 Screen Recorder/
   App/            entry point, RootView, AppRouter, AppContainer
   Core/           architecture contract, environment, storage
   Common/         shared UI: Theme (Palette, Typography, Metrics), Components, Extensions
-  Features/       Splash, Onboarding, Home
+  Features/       Splash, Onboarding, Home, Dashboard, Recorder, Settings
   Resources/      Assets, Fonts, Localizable.xcstrings
 Config/           xcconfigs + Info.plist
 scripts/          generate_app_icon.swift
